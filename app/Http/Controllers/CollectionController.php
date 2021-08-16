@@ -14,7 +14,8 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        //
+        $collections = Collection::all();
+        return view('home', ['collections' => $collections]);
     }
 
     /**
@@ -46,7 +47,8 @@ class CollectionController extends Controller
      */
     public function show(Collection $collection)
     {
-        //
+        $words = $collection->words()->get();
+        return view('collection', ['collection' => $collection, 'words' => $words]);
     }
 
     /**
